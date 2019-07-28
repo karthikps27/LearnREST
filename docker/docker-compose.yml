@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  database:
+    image: postgresql
+    container_name: pg_container
+    volumes:
+        - pgdata:/Users/karthikps/Library/Application\ Support/Postgres/var-11
+    environment:
+        - POSTGRES_PASSWORD=sample
+        - POSTGRES_USER=sample
+        - POSTGRES_DB=sample
+        - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+        - 5432:5432
+
+  app:
+    build: .
+    container_name: node_container
+    ports: 
+        - 8080:8080
+    links:
+        - database
+    environment:
+        - PGPASSWORD=docker
+        - PGUSER=docker
+        - PGDATABASE=database
+        - PGHOST=database
+        - PGPORT=5432
+    depends_on:
+        - database
+
+volumes:
+  pgdata: {}
