@@ -32,4 +32,9 @@ public class UserController {
     	userRepository.save(user);
     	return "Executed";
     }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public List<User> get() {
+    	return userRepository.findAll();
+    }
 }

@@ -1,0 +1,30 @@
+=============================================================================================
+Following commands to push docker image to ECR
+=============================================================================================
+aws configure
+
+aws ecr get-login --region us-east-2 --no-include-email
+
+docker tag learn-rest:latest 342305230154.dkr.ecr.us-east-2.amazonaws.com/learn-rest:1.0
+
+docker push 342305230154.dkr.ecr.us-east-2.amazonaws.com/learn-rest:1.0
+
+=============================================================================================
+
+
+
+=============================================================================================
+Docker commands and tips
+=============================================================================================
+
+docker build -t learn-rest:latest .
+
+docker run -d -p 8080:8080 learn-rest:latest
+
+docker stop 55d764e8eb9a
+
+sudo docker-compose up
+
+sudo docker-compose down
+
+=============================================================================================
